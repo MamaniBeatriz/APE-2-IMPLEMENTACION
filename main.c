@@ -1,17 +1,28 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include "tUsuario.h"
 
-void mostrar_menu_usuario(int *opcion);
+
+
+
+void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios);
 
 int main(){
     int opcion;
-    mostrar_menu_usuario(&opcion);
+    ListaUsuario *lista_usuarios = NULL;
+    mostrar_menu_usuario(&opcion, &lista_usuarios);
     return 0;
 }
 
 
-void mostrar_menu_usuario(int *opcion){
+
+
+void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
+    int id_usuario;
+    char nombre[50];
+    float saldo;
+
     printf("1. Registrar usuario\n");
     printf("2. Buscar usuario\n");
     printf("3. Eliminar usuario\n");
@@ -20,11 +31,35 @@ void mostrar_menu_usuario(int *opcion){
     printf("6. Consultar saldo\n");
     printf("7. Salir\n");
     printf("Ingrese su opcion: ");
-    scanf("%d", &opcion);
+    scanf("%d", opcion);
     do{
         switch(*opcion){
             case 1:
-                // Llamar a la función para registrar usuario
+                printf("Ingrese el ID del usuario: ");
+                scanf("%d", &id_usuario);
+                printf("Ingrese el nombre del usuario: ");
+                scanf(" %49[^\n]", nombre);
+                printf("Ingrese el saldo inicial: ");
+                scanf("%f", &saldo);
+
+                Usuario *nuevo_usuario = crear_usuario(
+                    id_usuario,
+                    nombre,
+                    saldo
+                );
+
+                if (nuevo_usuario == NULL) {
+                    printf("No se pudo crear el usuario.\n");
+                    break;
+                }
+
+                if (registrar_usuario(lista_usuarios, nuevo_usuario) == NULL) {
+                    printf("No se pudo registrar el usuario.\n");
+                } else {
+                    printf("Usuario registrado correctamente.\n");
+                }
+
+                destruir_usuario(nuevo_usuario);
                 break;
             case 2:
                 // Llamar a la función para buscar usuario
@@ -48,7 +83,7 @@ void mostrar_menu_usuario(int *opcion){
                 printf("Opcion invalida. Intente nuevamente.\n");
         }
         printf("Ingrese su opcion: ");
-        scanf("%d", opcion);
+        scanf("%d",opcion);
     } while(*opcion != 7);
 
 }
