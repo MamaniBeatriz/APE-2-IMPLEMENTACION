@@ -49,3 +49,21 @@ Usuario* registrar_usuario(ListaUsuario **lista, Usuario *nuevo_usuario) {
         return &nuevo_nodo_usuario->dato;
     }
 }
+
+
+
+ListaUsuario* eliminar_usuario(ListaUsuario **lista_usuarios){
+    int id_usuario_buscado;
+printf("Ingrese su ID\n");
+scanf("%d",&id_usuario_buscado);
+
+if(buscar_usuario_recursivo((&lista_usuarios,id_usuario_buscado)==1)){
+free(*lista_usuarios);
+printf("ID del usuario eliminado:%d\n",id_usuario_buscado);
+}
+else
+{
+printf("Usuario no encontrado.\n");
+}
+return *lista_usuarios;
+}

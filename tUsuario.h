@@ -9,7 +9,7 @@
 Usuario* registrar_usuario(ListaUsuario **lista, Usuario *nuevo_usuario);
 Usuario* crear_usuario(int id_usuario, const char *nombre, float saldo);
 void destruir_usuario(Usuario *usuario);
-ListaUsuario* eliminar_usuario(ListaUsuario **lista, int id_usuario_eliminar);
+ListaUsuario* eliminar_usuario(ListaUsuario **lista_usuarios);
 // Funciones para manejar las operaciones de los usuarios
 void ingresar_dinero(ListaUsuario *lista, float monto, char *fecha);
 void retirar_dinero(ListaUsuario *lista, float monto, char *fecha);

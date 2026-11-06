@@ -65,7 +65,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 // Llamar a la función para buscar usuario
                 break;
             case 3:
-                // Llamar a la función para eliminar usuario
+               eliminar_usuario(&lista_usuarios);// Llamar a la función para eliminar usuario
                 break;
             case 4:
                 // Llamar a la función para ingresar dinero
