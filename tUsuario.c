@@ -51,6 +51,22 @@ Usuario* registrar_usuario(ListaUsuario **lista, Usuario *nuevo_usuario) {
 }
 
 
+int buscar_Usuario_recursivo(ListaUsuario *lista_usuarios, int id_usuario_buscado){
+   int encontrado;
+    if(lista_usuarios==NULL){
+        encontrado=0;
+    }
+     else{
+        if(lista_usuarios->dato.id_usuario==id_usuario_buscado){
+        encontrado=1;
+    }else{
+        encontrado=buscar_usuario_recursivo(lista_usuarios->sgte,id_usuario_buscado);
+    }
+    return encontrado;
+}
+}
+
+
 
 ListaUsuario* eliminar_usuario(ListaUsuario **lista_usuarios){
     int id_usuario_buscado;
