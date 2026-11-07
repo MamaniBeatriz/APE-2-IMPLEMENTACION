@@ -83,3 +83,79 @@ printf("Usuario no encontrado.\n");
 }
 return *lista_usuarios;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+float consultar_saldo(ListaUsuario *lista){
+     int id_buscar;   
+    if(lista==NULL){
+        printf("La lista esta vacia\n");
+        }
+    else{
+        printf("Ingrese ID de usuario que desee consultar su saldo:\n");
+        scanf("%d",&id_buscar);
+        if(buscar_usuario_recursivo(lista,id_buscar)==1){
+            printf("El saldo del usuario es:  %.2f\n", lista->dato.saldo);
+        }
+        else{ 
+            printf("Usuario no encontrado\n");
+        }
+    } 
+
+}
+
+
+
+
+
