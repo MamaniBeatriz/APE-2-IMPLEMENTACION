@@ -58,6 +58,15 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 destruir_usuario(nuevo_usuario);
                 break;
             case 2:
+                int id_usuario_encontrado;
+                printf("Ingrese el ID del usuario a buscar: ");
+                scanf("%d", &id_usuario_encontrado);
+                int usuario_encontrado = buscar_usuario_recursivo(*lista_usuarios, id_usuario_encontrado);
+               if(usuario_encontrado == 1) {
+                    printf("Usuario encontrado\n");
+                } else {
+                    printf("Usuario no encontrado.\n");
+                }
                 // Llamar a la función para buscar usuario
                 break;
             case 3:
