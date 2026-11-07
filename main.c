@@ -42,11 +42,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 printf("Ingrese el saldo inicial: ");
                 scanf("%f", &saldo);
 
-                Usuario *nuevo_usuario = crear_usuario(
-                    id_usuario,
-                    nombre,
-                    saldo
-                );
+                Usuario *nuevo_usuario = crear_usuario(id_usuario,nombre,saldo);
 
                 if (nuevo_usuario == NULL) {
                     printf("No se pudo crear el usuario.\n");
@@ -65,7 +61,11 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 // Llamar a la función para buscar usuario
                 break;
             case 3:
-               eliminar_usuario(&lista_usuarios);// Llamar a la función para eliminar usuario
+                int id_usuario_buscado;
+                printf("Ingrese el ID del usuario a eliminar: ");
+                scanf("%d", &id_usuario_buscado);
+                *lista_usuarios = eliminar_usuario(lista_usuarios,id_usuario_buscado);// Llamar a la función para eliminar usuario
+                //printf("Usuario eliminado correctamente.\n");
                 break;
             case 4:
                 // Llamar a la función para ingresar dinero

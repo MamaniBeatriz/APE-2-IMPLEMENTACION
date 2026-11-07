@@ -51,7 +51,7 @@ Usuario* registrar_usuario(ListaUsuario **lista, Usuario *nuevo_usuario) {
 }
 
 
-int buscar_Usuario_recursivo(ListaUsuario *lista_usuarios, int id_usuario_buscado){
+int buscar_usuario_recursivo(ListaUsuario *lista_usuarios, int id_usuario_buscado){
    int encontrado;
     if(lista_usuarios==NULL){
         encontrado=0;
@@ -68,19 +68,14 @@ int buscar_Usuario_recursivo(ListaUsuario *lista_usuarios, int id_usuario_buscad
 
 
 
-ListaUsuario* eliminar_usuario(ListaUsuario **lista_usuarios){
-    int id_usuario_buscado;
-printf("Ingrese su ID\n");
-scanf("%d",&id_usuario_buscado);
-
-if(buscar_usuario_recursivo((&lista_usuarios,id_usuario_buscado)==1)){
-free(*lista_usuarios);
-printf("ID del usuario eliminado:%d\n",id_usuario_buscado);
-}
-else
-{
-printf("Usuario no encontrado.\n");
-}
+ListaUsuario *eliminar_usuario(ListaUsuario **lista_usuarios,int id_usuario_buscado) {
+    if(buscar_usuario_recursivo(*lista_usuarios,id_usuario_buscado)==1){
+    printf("ID del usuario eliminado:%d\n",(*lista_usuarios)->dato.id_usuario);
+    free(*lista_usuarios);
+    *lista_usuarios = (*lista_usuarios)->sgte;
+    }else{
+        printf("Usuario no encontrado.\n");
+    }
 return *lista_usuarios;
 }
 
