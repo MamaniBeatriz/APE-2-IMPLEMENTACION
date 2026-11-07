@@ -11,7 +11,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios);
 int main(){
     int opcion;
     ListaUsuario *lista_usuarios = NULL;
-    
+
     mostrar_menu_usuario(&opcion, &lista_usuarios);
     return 0;
 }
@@ -77,24 +77,15 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 *lista_usuarios = eliminar_usuario(lista_usuarios,id_usuario_buscado);// Llamar a la función para eliminar usuario
                 //printf("Usuario eliminado correctamente.\n");
                 break;
-            case 4: float monto;
-                     int id_usuario;
-                     printf("Ingrese el ID del usuario al que desee ingresar dinero\n");
-                     scanf("%d",&id_usuario);
-                     printf("Ingrese el monto a ingresar: ");
-                     scanf("%f",&monto);
-                     ingresar_dinero(&lista_usuarios,monto,id_usuario);// Llamar a la función para ingresar dinero
+            case 4: // Llamar a la función para ingresar dinero
                 break;
             case 5:
                 // Llamar a la función para retirar dinero
                 break;
             case 6:
-            int id_usuario;
-                printf("Ingrese el ID del usuario para consultar su saldo: ");
-                scanf("%d",&id_usuario);
+          
                 // consultar_saldo(&lista_usuarios,int id_usuario);// Llamar a la función para consultar saldo
-                buscar_usuario_recursivo(*lista_usuarios,id_usuario);
-                printf("El saldo actual del usuario es: %.2f\n",lista_usuarios->dato.saldo);
+                
                 break;
             case 7:
                 printf("Saliendo del programa...\n");
