@@ -74,7 +74,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 // Llamar a la función para retirar dinero
                 break;
             case 6:
-                // Llamar a la función para consultar saldo
+                 consultar_saldo(&lista_usuarios);// Llamar a la función para consultar saldo
                 break;
             case 7:
                 printf("Saliendo del programa...\n");
