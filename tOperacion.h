@@ -1,6 +1,12 @@
  #ifndef TOPERACION_H
  #define TOPERACION_H
  //ESTRUCTURAS 
+ typedef struct tFecha{
+    int dia;
+    int mes;
+    int anio;
+}tFecha;
+
  typedef struct Operaciones{//guarda la informacion de una operacion 
     int ID_operaciones;
     float monto;

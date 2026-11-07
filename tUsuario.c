@@ -51,16 +51,16 @@ Usuario* registrar_usuario(ListaUsuario **lista, Usuario *nuevo_usuario) {
 }
 
 
-int buscar_usuario_recursivo(ListaUsuario *lista_usuarios, int id_usuario_buscado){
+int buscar_usuario_recursivo(ListaUsuario *lista_usuarios, int id_usuario){
    int encontrado;
     if(lista_usuarios==NULL){
         encontrado=0;
     }
      else{
-        if(lista_usuarios->dato.id_usuario==id_usuario_buscado){
+        if(lista_usuarios->dato.id_usuario==id_usuario){
         encontrado=1;
     }else{
-        encontrado=buscar_usuario_recursivo(lista_usuarios->sgte,id_usuario_buscado);
+        encontrado=buscar_usuario_recursivo(lista_usuarios->sgte,id_usuario);
     }
     return encontrado;
 }
@@ -79,6 +79,23 @@ ListaUsuario *eliminar_usuario(ListaUsuario **lista_usuarios,int id_usuario_busc
 return *lista_usuarios;
 }
 
+tFecha obtenerFecha(){
+    time_t tiempo;
+    struct tm *fechaActual;
+    
+    tiempo=time(NULL);
+    fechaActual=localtime(&tiempo);
+    tFecha fecha;
+    fecha.dia=fechaActual->tm_mday;
+    fecha.mes=fechaActual->tm_mon + 1;
+    fecha.anio=fechaActual->tm_year + 1900;
+    return fecha;
+}
+
+
+
+
+   
 
 
 
@@ -132,23 +149,22 @@ return *lista_usuarios;
 
 
 
-float consultar_saldo(ListaUsuario *lista){
-     int id_buscar;   
+
+
+
+float consultar_saldo(ListaUsuario *lista,int id_usuario){
+     
     if(lista==NULL){
         printf("La lista esta vacia\n");
         }
-    else{
-        printf("Ingrese ID de usuario que desee consultar su saldo:\n");
-        scanf("%d",&id_buscar);
-        if(buscar_usuario_recursivo(lista,id_buscar)==1){
+
+        if(buscar_usuario_recursivo(lista,id_usuario)==1){
             printf("El saldo del usuario es:  %.2f\n", lista->dato.saldo);
         }
         else{ 
             printf("Usuario no encontrado\n");
         }
     } 
-
-}
 
 
 
