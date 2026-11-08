@@ -146,23 +146,26 @@ ListaOperaciones*crear_operacion(int id_operacion, float monto, int tipo) {
 
 
 
-void retirar_dinero(ListaUsuario **lista, float monto) {
+void retirar_dinero(ListaUsuario **lista, float monto, int id_usuario) {
     ListaUsuario *aux = *lista;
     tFecha fecha = obtenerFecha();
-    ListaOperaciones *aux_operaciones = aux->operaciones;
-    aux_operaciones = crear_operacion(aux->dato.id_usuario, monto, 2); // Tipo 2 para retiro
-    while(aux != NULL && aux_operaciones != NULL) {
-        if(aux->dato.saldo >= monto){
-            aux->dato.saldo -= monto;
-            printf("Se han retirado %.2f del usuario %d. Nuevo saldo: %.2f con la fecha: %02d/%02d/%d\n", monto, aux->dato.id_usuario, aux->dato.saldo, fecha.dia, fecha.mes, fecha.anio);   
-        }
+    //ListaOperaciones *aux_operaciones = aux->operaciones;
+    while (aux != NULL && aux->dato.id_usuario != id_usuario) {
         aux = aux->sgte;
-        aux_operaciones = aux_operaciones->sgte;
     }
-    
-
+    if (aux == NULL) {
+        printf("Usuario no encontrado.\n");
+    }
+    ListaOperaciones *nueva_operacion = crear_operacion(id_usuario, monto, 2);
+    if (nueva_operacion == NULL) {
+        printf("Error al crear la operación.\n");
+    }
+    nueva_operacion->dato.fecha = fecha;
+    nueva_operacion->sgte = aux->operaciones;
+    aux->operaciones = nueva_operacion;
+    aux->dato.saldo -= monto;
+    printf("Se ha retirado %.2f del usuario %d. Nuevo saldo: %.2f\n", monto, aux->dato.id_usuario, aux->dato.saldo);
 }
-
 
 
 

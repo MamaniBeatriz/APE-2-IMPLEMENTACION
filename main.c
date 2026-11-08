@@ -83,10 +83,12 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
             case 5:
                 // Llamar a la función para retirar dinero
                 float monto;
+                int id_usuario;
+                printf("Ingrese el ID del usuario para retirar dinero: ");
+                scanf("%d", &id_usuario);
                 printf("Ingrese el monto a retirar: ");
                 scanf("%f", &monto);
-                
-                retirar_dinero(lista_usuarios, monto);
+                retirar_dinero(lista_usuarios, monto, id_usuario);
                 break;
             case 6: int id_usuuario;
             printf("Ingrese el ID del usuario para consultar su saldo:");
