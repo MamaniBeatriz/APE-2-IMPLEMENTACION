@@ -11,6 +11,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios);
 int main(){
     int opcion;
     ListaUsuario *lista_usuarios = NULL;
+   
 
     mostrar_menu_usuario(&opcion, &lista_usuarios);
     return 0;
@@ -82,7 +83,10 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
             case 5:
                 // Llamar a la función para retirar dinero
                 break;
-            case 6:
+            case 6: int id_usuuario;
+            printf("Ingrese el ID del usuario para consultar su saldo:");
+            scanf("%d",&id_usuuario);
+            consultar_saldo(*lista,id_usuuario);
           
                 // consultar_saldo(&lista_usuarios,int id_usuario);// Llamar a la función para consultar saldo
                 

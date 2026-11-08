@@ -152,20 +152,20 @@ tFecha obtenerFecha(){
 
 
 
-float consultar_saldo(ListaUsuario *lista,int id_usuario){
-     
+void consultar_saldo(ListaUsuario *lista,int id_usuuario){
+   
     if(lista==NULL){
         printf("La lista esta vacia\n");
         }
 
-        if(buscar_usuario_recursivo(lista,id_usuario)==1){
+        if(buscar_usuario_recursivo(lista,id_usuuario)==1){
             printf("El saldo del usuario es:  %.2f\n", lista->dato.saldo);
         }
         else{ 
             printf("Usuario no encontrado\n");
         }
-    } 
-
+    }   
+        
 
 
 
