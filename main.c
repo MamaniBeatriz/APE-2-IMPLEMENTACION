@@ -43,10 +43,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 scanf("%d", &id_usuario);
                 printf("Ingrese el nombre del usuario: ");
                 scanf(" %49[^\n]", nombre);
-                printf("Ingrese el saldo inicial: ");
-                scanf("%f", &saldo);
-
-                Usuario *nuevo_usuario = crear_usuario(id_usuario,nombre,saldo);
+                Usuario *nuevo_usuario = crear_usuario(id_usuario,nombre,0.0);
 
                 if (nuevo_usuario == NULL) {
                     printf("No se pudo crear el usuario.\n");

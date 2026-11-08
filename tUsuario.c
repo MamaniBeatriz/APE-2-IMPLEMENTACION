@@ -78,6 +78,12 @@ ListaUsuario *eliminar_usuario(ListaUsuario **lista_usuarios,int id_usuario_busc
     if(actual == NULL){
         printf("Usuario no encontrado.\n");
     }else{
+        ListaOperaciones *operacion = actual->operaciones;
+        while (operacion != NULL) {
+            ListaOperaciones *siguiente = operacion->sgte;
+            free(operacion);
+            operacion = siguiente;
+        }
         if(anterior == NULL){
             *lista_usuarios = actual->sgte;
         }else{
