@@ -69,12 +69,22 @@ int buscar_usuario_recursivo(ListaUsuario *lista_usuarios, int id_usuario){
 
 
 ListaUsuario *eliminar_usuario(ListaUsuario **lista_usuarios,int id_usuario_buscado) {
-    if(buscar_usuario_recursivo(*lista_usuarios,id_usuario_buscado)==1){
-    printf("ID del usuario eliminado:%d\n",(*lista_usuarios)->dato.id_usuario);
-    free(*lista_usuarios);
-    *lista_usuarios = (*lista_usuarios)->sgte;
-    }else{
+    ListaUsuario *actual = *lista_usuarios;
+    ListaUsuario *anterior = NULL;
+    while(actual != NULL && actual->dato.id_usuario != id_usuario_buscado) {
+        anterior = actual;
+        actual = actual->sgte;
+    }
+    if(actual == NULL){
         printf("Usuario no encontrado.\n");
+    }else{
+        if(anterior == NULL){
+            *lista_usuarios = actual->sgte;
+        }else{
+            anterior->sgte = actual->sgte;
+        }
+        printf("ID del usuario eliminado:%d\n",actual->dato.id_usuario);
+        free(actual);
     }
 return *lista_usuarios;
 }
