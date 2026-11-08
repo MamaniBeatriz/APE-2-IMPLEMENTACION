@@ -204,22 +204,23 @@ void retirar_dinero(ListaUsuario **lista, float monto, int id_usuario) {
 
 
 int contar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {
-    if (lista_usuarios == NULL) {
-        return -1;
-    }
-    if (lista_usuarios->dato.id_usuario == id_usuario) {
-        return contar_nodos_operacion_recursivo(lista_usuarios->operaciones);
-    }
-    return contar_operaciones_recursivo(lista_usuarios->sgte, id_usuario);
-}
+    int cantidad = -1;
 
-int contar_nodos_operacion_recursivo(ListaOperaciones *lista_operaciones) {
-    if (lista_operaciones == NULL) {
-        return 0;
+    if (lista_usuarios != NULL) {
+        if (lista_usuarios->dato.id_usuario == id_usuario) {
+            cantidad = 0;
+            ListaOperaciones *operacion = lista_usuarios->operaciones;
+            while (operacion != NULL) {
+                cantidad++;
+                operacion = operacion->sgte;
+            }
+        } else {
+            cantidad = contar_operaciones_recursivo(lista_usuarios->sgte, id_usuario);
+        }
     }
-    return 1 + contar_nodos_operacion_recursivo(lista_operaciones->sgte);
-}
 
+    return cantidad;
+}
 
 
 
