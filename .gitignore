@@ -1,0 +1,7 @@
+# Ignore all generated and non-source files.
+*
+
+# Keep C sources, headers, and this ignore file.
+!*.c
+!*.h
+!.gitignore
