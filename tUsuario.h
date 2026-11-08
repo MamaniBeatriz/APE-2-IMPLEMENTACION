@@ -15,7 +15,7 @@ ListaUsuario* eliminar_usuario(ListaUsuario **lista_usuarios, int id_usuario_bus
 tFecha obtenerFecha();
 ListaOperaciones*crear_operacion(int id_operacion, float monto, int tipo);
 void retirar_dinero(ListaUsuario **lista, float monto);
-void ingresar_dinero(ListaUsuario **lista, float monto);
+void ingresar_dinero(ListaUsuario **lista, float monto,int id_usuariooo);
 void consultar_saldo(ListaUsuario *lista_usuario,int id_usuuario);
 
 // Funciones recursivas
