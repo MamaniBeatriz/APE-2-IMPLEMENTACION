@@ -202,25 +202,34 @@ void retirar_dinero(ListaUsuario **lista, float monto, int id_usuario) {
 }
 
 
-
-int contar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {
+int contar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {//busca al usuario y cuando lo encuentra llamaa la funcioncant_operaciones_recursiva para contar cuantas operaciones tiene ese usuario 
     int cantidad = -1;
 
     if (lista_usuarios != NULL) {
         if (lista_usuarios->dato.id_usuario == id_usuario) {
-            cantidad = 0;
-            ListaOperaciones *operacion = lista_usuarios->operaciones;
-            while (operacion != NULL) {
-                cantidad++;
-                operacion = operacion->sgte;
-            }
+            cantidad = cant_operaciones_recursiva(lista_usuarios->operaciones);
         } else {
-            cantidad = contar_operaciones_recursivo(lista_usuarios->sgte, id_usuario);
+            cantidad = contar_operaciones_recursivo(
+                lista_usuarios->sgte, id_usuario
+            );
         }
     }
 
     return cantidad;
 }
+
+int cant_operaciones_recursiva(ListaOperaciones *operacion) {//recibe el primer nodo de la lista de operaciones de ese usuario, si hay una operacion suma 1 y se autoinvoca pero con la siguienteoperacion hasta llegar a NULL
+    int cantidad;
+
+    if (operacion == NULL) {
+        cantidad = 0;
+    } else {
+        cantidad = 1 + cant_operaciones_recursiva(operacion->sgte);
+    }
+
+    return cantidad;
+}
+
 
 
 

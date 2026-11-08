@@ -18,8 +18,6 @@ int main(){
 }
 
 
-
-
 void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
     int id_usuario;
     char nombre[50];
@@ -87,7 +85,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 int id_usuario;
                 printf("\nIngrese el ID del usuario al que desee ingresar dinero: ");
                 scanf("%d",&id_usuario);
-                printf("Ingrese el monto a ingresar: ");
+                printf("Ingrese el monto a depositar: ");
                 scanf("%f",&monto);
                 ingresar_dinero(lista_usuarios,monto,id_usuario);
                 break;
