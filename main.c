@@ -114,6 +114,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios, ListaOpera
             scanf("%d",&id_usuariio);
             contar_operaciones_recursivo(*lista_usuarios,*lista_operaciones,id_usuariio);
                 // Llamar a la función para consultar operaciones del usuario
+                break;
             case 8:
                 printf("Saliendo del programa...\n");
                 break;
@@ -122,6 +123,6 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios, ListaOpera
         }
         printf("Ingrese su opcion: ");
         scanf("%d",opcion);
-    } while(*opcion != 7);
+    } while(*opcion != 8);
 
 }
