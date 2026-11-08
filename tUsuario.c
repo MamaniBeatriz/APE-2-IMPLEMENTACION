@@ -156,6 +156,8 @@ void retirar_dinero(ListaUsuario **lista, float monto) {
             aux->dato.saldo -= monto;
             printf("Se han retirado %.2f del usuario %d. Nuevo saldo: %.2f con la fecha: %02d/%02d/%d\n", monto, aux->dato.id_usuario, aux->dato.saldo, fecha.dia, fecha.mes, fecha.anio);   
         }
+        aux = aux->sgte;
+        aux_operaciones = aux_operaciones->sgte;
     }
     
 
