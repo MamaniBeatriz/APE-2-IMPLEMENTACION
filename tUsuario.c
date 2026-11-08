@@ -91,21 +91,33 @@ tFecha obtenerFecha(){
     fecha.anio=fechaActual->tm_year + 1900;
     return fecha;
 }
-
+/*
 void consultar_saldo(ListaUsuario *lista_usuario,int id_usuuario){
    
     if(lista_usuario==NULL){
         printf("La lista esta vacia\n");
-        }
+    }
 
-        if(buscar_usuario_recursivo(lista_usuario,id_usuuario)==1){
-            printf("El usuario %d tiene un saldo de:  %.2f\n", lista_usuario->dato.id_usuario, lista_usuario->dato.saldo);
-        }
-        else{ 
-            printf("Usuario no encontrado\n");
-        }
-    }   
-        
+    if(buscar_usuario_recursivo(lista_usuario,id_usuuario)==1){
+        printf("El usuario %d tiene un saldo de:  %.2f\n", lista_usuario->dato.id_usuario, lista_usuario->dato.saldo);
+    }
+    else{ 
+        printf("Usuario no encontrado\n");
+    }
+}   
+*/
+
+void consultar_saldo(ListaUsuario *lista_usuario, int id_usuario) {
+    while (lista_usuario != NULL && lista_usuario->dato.id_usuario != id_usuario) {
+        lista_usuario = lista_usuario->sgte;
+    }
+
+    if (lista_usuario == NULL) {
+        printf("Usuario no encontrado.\n");
+    }
+
+    printf( "El usuario %d tiene un saldo de: %.2f\n",lista_usuario->dato.id_usuario,lista_usuario->dato.saldo);
+}
 
 
 
