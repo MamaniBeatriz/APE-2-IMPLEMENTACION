@@ -19,7 +19,7 @@ void retirar_dinero(ListaUsuario **lista, float monto, int id_usuario);
 void consultar_saldo(ListaUsuario *lista_usuario,int id_usuuario);
 
 // Funciones recursivas
-int contar_operaciones_recursivo(ListaUsuario *lista_usuarios,ListaOperaciones *lista_operaciones, int id_usuariio);
+int contar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario);
 int buscar_usuario_recursivo(ListaUsuario *lista,int id_usuario_buscado);
 
 

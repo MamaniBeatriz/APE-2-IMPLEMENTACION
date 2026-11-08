@@ -6,22 +6,21 @@
 
 
 
-void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios, ListaOperaciones **lista_operaciones);
+void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios);
 
 int main(){
     int opcion;
     ListaUsuario *lista_usuarios = NULL;
-    ListaOperaciones *lista_operaciones=NULL;
    
 
-    mostrar_menu_usuario(&opcion, &lista_usuarios, &lista_operaciones);
+    mostrar_menu_usuario(&opcion, &lista_usuarios);
     return 0;
 }
 
 
 
 
-void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios, ListaOperaciones **lista_operaciones) {
+void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
     int id_usuario;
     char nombre[50];
     float saldo;
@@ -108,13 +107,18 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios, ListaOpera
                 // consultar_saldo(&lista_usuarios,int id_usuario);// Llamar a la función para consultar saldo
                 
                 break;
-            case 7:
-            int id_usuariio;
-             printf("Ingrese el ID del usuario para consultar su cantidad de operaciones:");
-            scanf("%d",&id_usuariio);
-            contar_operaciones_recursivo(*lista_usuarios,*lista_operaciones,id_usuariio);
-                // Llamar a la función para consultar operaciones del usuario
+            case 7: {
+                int id_usuario;
+                printf("Ingrese el ID del usuario para consultar su cantidad de operaciones: ");
+                scanf("%d", &id_usuario);
+                int cantidad = contar_operaciones_recursivo(*lista_usuarios, id_usuario);
+                if (cantidad < 0) {
+                    printf("Usuario no encontrado.\n");
+                } else {
+                    printf("El usuario %d realizo %d operaciones.\n", id_usuario, cantidad);
+                }
                 break;
+            }
             case 8:
                 printf("Saliendo del programa...\n");
                 break;

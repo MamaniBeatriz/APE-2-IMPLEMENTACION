@@ -201,6 +201,34 @@ void retirar_dinero(ListaUsuario **lista, float monto, int id_usuario) {
     printf("Se ha retirado %.2f del usuario %d. Nuevo saldo: %.2f\n", monto, aux->dato.id_usuario, aux->dato.saldo);
 }
 
+int contar_nodos_operacion_recursivo(ListaOperaciones *lista_operaciones) {
+    if (lista_operaciones == NULL) {
+        return 0;
+    }
+    return 1 + contar_nodos_operacion_recursivo(lista_operaciones->sgte);
+}
+
+int contar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {
+    if (lista_usuarios == NULL) {
+        return -1;
+    }
+    if (lista_usuarios->dato.id_usuario == id_usuario) {
+        return contar_nodos_operacion_recursivo(lista_usuarios->operaciones);
+    }
+    return contar_operaciones_recursivo(lista_usuarios->sgte, id_usuario);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
