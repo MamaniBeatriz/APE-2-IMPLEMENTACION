@@ -120,6 +120,30 @@ ListaOperaciones*crear_operacion(int id_operacion, float monto, int tipo) {
     return nueva_operacion;
 }
 
+void ingresar_dinero(ListaUsuario **lista,float monto,int id_usuariooo){
+    ListaUsuario *aux=*lista;
+    tFecha fecha=obtenerFecha();
+
+    while(aux!= NULL&&aux->dato.id_usuario!=id_usuariooo){
+        aux=aux->sgte;
+    }
+    if(aux==NULL){
+        printf("Usuario no encontrado.\n");
+    }
+ListaOperaciones *nueva_operacion=crear_operacion(aux->dato.id_usuario,monto,1); // Tipo 1 para ingreso
+    if(nueva_operacion==NULL){
+        printf("Error al crear la nueva operacion.\n");
+    }
+    nueva_operacion->dato.fecha=fecha;
+    nueva_operacion->sgte=aux->operaciones;
+    aux->operaciones=nueva_operacion;
+    aux->dato.saldo +=monto;
+    printf("Se ha ingresado %.2f al usuario %d. Nuevo saldo: %.2f con la fecha: %02d/%02d/%d\n",monto,aux->dato.id_usuario,aux->dato.saldo,fecha.dia,fecha.mes,fecha.anio);
+
+}
+
+
+
 
 
 

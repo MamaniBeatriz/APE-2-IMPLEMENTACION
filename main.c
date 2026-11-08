@@ -28,10 +28,9 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
     printf("1. Registrar usuario\n");
     printf("2. Buscar usuario\n");
     printf("3. Eliminar usuario\n");
-    printf("4. Ingresar dinero\n");
-    printf("5. Retirar dinero\n");
-    printf("6. Consultar saldo\n");
-    printf("7. Salir\n");
+    printf("4. Retirar dinero\n");
+    printf("5. Consultar saldo\n");
+    printf("6. Salir\n");
     printf("Ingrese su opcion: ");
     scanf("%d", opcion);
     do{
@@ -78,9 +77,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 *lista_usuarios = eliminar_usuario(lista_usuarios,id_usuario_buscado);// Llamar a la función para eliminar usuario
                 //printf("Usuario eliminado correctamente.\n");
                 break;
-            case 4: // Llamar a la función para ingresar dinero
-                break;
-            case 5:
+            case 4:
                 // Llamar a la función para retirar dinero
                 float monto;
                 int id_usuario;
@@ -90,7 +87,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 scanf("%f", &monto);
                 retirar_dinero(lista_usuarios, monto, id_usuario);
                 break;
-            case 6: int id_usuuario;
+            case 5: int id_usuuario;
             printf("Ingrese el ID del usuario para consultar su saldo:");
             scanf("%d",&id_usuuario);
             consultar_saldo(*lista_usuarios,id_usuuario);
@@ -98,7 +95,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 // consultar_saldo(&lista_usuarios,int id_usuario);// Llamar a la función para consultar saldo
                 
                 break;
-            case 7:
+            case 6:
                 printf("Saliendo del programa...\n");
                 break;
             default:
@@ -106,6 +103,6 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
         }
         printf("Ingrese su opcion: ");
         scanf("%d",opcion);
-    } while(*opcion != 7);
+    } while(*opcion != 6);
 
 }
