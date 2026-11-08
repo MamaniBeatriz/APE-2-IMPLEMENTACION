@@ -6,21 +6,22 @@
 
 
 
-void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios);
+void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios, ListaOperaciones **lista_operaciones);
 
 int main(){
     int opcion;
     ListaUsuario *lista_usuarios = NULL;
+    ListaOperaciones *lista_operaciones=NULL;
    
 
-    mostrar_menu_usuario(&opcion, &lista_usuarios);
+    mostrar_menu_usuario(&opcion, &lista_usuarios, &lista_operaciones);
     return 0;
 }
 
 
 
 
-void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
+void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios, ListaOperaciones **lista_operaciones) {
     int id_usuario;
     char nombre[50];
     float saldo;
@@ -31,7 +32,8 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
     printf("4. Ingresar dinero\n");
     printf("5. Retirar dinero\n");
     printf("6. Consultar saldo\n");
-    printf("7. Salir\n");
+    printf("7. Consultar operaciones del usuario\n");
+    printf("8. Salir\n");
     printf("Ingrese su opcion: ");
     scanf("%d", opcion);
     do{
@@ -107,6 +109,12 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 
                 break;
             case 7:
+            int id_usuariio;
+             printf("Ingrese el ID del usuario para consultar su cantidad de operaciones:");
+            scanf("%d",&id_usuariio);
+            contar_operaciones_recursivo(*lista_usuarios,*lista_operaciones,id_usuariio);
+                // Llamar a la función para consultar operaciones del usuario
+            case 8:
                 printf("Saliendo del programa...\n");
                 break;
             default:
