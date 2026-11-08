@@ -202,22 +202,7 @@ void retirar_dinero(ListaUsuario **lista, float monto, int id_usuario) {
 }
 
 
-int contar_operaciones_recursivo(ListaUsuario *lista_usuarios, ListaOperaciones *lista_operaciones, int id_usuariio){
-     
-    if(lista_usuarios==NULL){
-        printf("No hay usuarios registrado\n");
-    }
-     else 
-        {
-        if(lista_usuarios->operaciones!=NULL && lista_usuarios->dato.id_usuario==id_usuariio){
-            printf("El usuario %d tiene %d operaciones registradas.\n", lista_usuarios->dato.id_usuario, lista_usuarios->operaciones->cant_operaciones);
-        }else{
-            printf("El usuario %d no tiene operaciones registradas.\n", lista_usuarios->dato.id_usuario);
-        }
-        contar_operaciones_recursivo(lista_usuarios->sgte, lista_operaciones, id_usuariio);
-           
-}
-}
+
 
 
 
