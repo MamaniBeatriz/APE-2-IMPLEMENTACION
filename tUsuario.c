@@ -120,7 +120,7 @@ ListaOperaciones*crear_operacion(int id_operacion, float monto, int tipo) {
     return nueva_operacion;
 }
 
-
+void ingresar_dinero()
 
 
 
