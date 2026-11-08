@@ -25,20 +25,23 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
     char nombre[50];
     float saldo;
 
-    printf("1. Registrar usuario\n");
-    printf("2. Buscar usuario\n");
-    printf("3. Eliminar usuario\n");
-    printf("4. Ingresar dinero\n");
-    printf("5. Retirar dinero\n");
-    printf("6. Consultar saldo\n");
-    printf("7. Consultar operaciones del usuario\n");
-    printf("8. Salir\n");
-    printf("Ingrese su opcion: ");
-    scanf("%d", opcion);
-    do{
+    do{ 
+        printf("\n ======MENU DE USUARIO======\n");
+        printf("1. Registrar usuario\n");
+        printf("2. Buscar usuario\n");
+        printf("3. Eliminar usuario\n");
+        printf("4. Ingresar dinero\n");
+        printf("5. Retirar dinero\n");
+        printf("6. Consultar saldo\n");
+        printf("7. Consultar operaciones del usuario\n");
+        printf("8. Salir\n");
+        printf("Ingrese una opcion: ");
+        scanf("%d", opcion);
+
         switch(*opcion){
             case 1:
-                printf("Ingrese el ID del usuario: ");
+           
+                printf("\nIngrese el ID del usuario: ");
                 scanf("%d", &id_usuario);
                 printf("Ingrese el nombre del usuario: ");
                 scanf(" %49[^\n]", nombre);
@@ -62,7 +65,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 break;
             case 2:
                 int id_usuario_encontrado;
-                printf("Ingrese el ID del usuario a buscar: ");
+                printf("\nIngrese el ID del usuario a buscar: ");
                 scanf("%d", &id_usuario_encontrado);
                 int usuario_encontrado = buscar_usuario_recursivo(*lista_usuarios, id_usuario_encontrado);
                if(usuario_encontrado == 1) {
@@ -74,7 +77,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 break;
             case 3:
                 int id_usuario_buscado;
-                printf("Ingrese el ID del usuario a eliminar: ");
+                printf("\nIngrese el ID del usuario a eliminar: ");
                 scanf("%d", &id_usuario_buscado);
                 *lista_usuarios = eliminar_usuario(lista_usuarios,id_usuario_buscado);// Llamar a la función para eliminar usuario
                 //printf("Usuario eliminado correctamente.\n");
@@ -82,7 +85,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
             case 4: {
                 float monto;
                 int id_usuario;
-                printf("Ingrese el ID del usuario al que desee ingresar dinero\n");
+                printf("\nIngrese el ID del usuario al que desee ingresar dinero: ");
                 scanf("%d",&id_usuario);
                 printf("Ingrese el monto a ingresar: ");
                 scanf("%f",&monto);
@@ -93,14 +96,14 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 // Llamar a la función para retirar dinero
                 float monto;
                 int id_usuario;
-                printf("Ingrese el ID del usuario para retirar dinero: ");
+                printf("\nIngrese el ID del usuario para retirar dinero: ");
                 scanf("%d", &id_usuario);
                 printf("Ingrese el monto a retirar: ");
                 scanf("%f", &monto);
                 retirar_dinero(lista_usuarios, monto, id_usuario);
                 break;
             case 6: int id_usuuario;
-            printf("Ingrese el ID del usuario para consultar su saldo:");
+            printf("\nIngrese el ID del usuario para consultar su saldo:");
             scanf("%d",&id_usuuario);
             consultar_saldo(*lista_usuarios,id_usuuario);
           
@@ -109,7 +112,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 break;
             case 7: {
                 int id_usuario;
-                printf("Ingrese el ID del usuario para consultar su cantidad de operaciones: ");
+                printf("\nIngrese el ID del usuario para consultar su cantidad de operaciones: ");
                 scanf("%d", &id_usuario);
                 int cantidad = contar_operaciones_recursivo(*lista_usuarios, id_usuario);
                 if (cantidad < 0) {
@@ -125,8 +128,6 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
             default:
                 printf("Opcion invalida. Intente nuevamente.\n");
         }
-        printf("Ingrese su opcion: ");
-        scanf("%d",opcion);
     } while(*opcion != 8);
 
 }
