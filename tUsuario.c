@@ -92,80 +92,23 @@ tFecha obtenerFecha(){
     return fecha;
 }
 
-
-
-
+void consultar_saldo(ListaUsuario *lista_usuario,int id_usuuario){
    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void consultar_saldo(ListaUsuario *lista,int id_usuuario){
-   
-    if(lista==NULL){
+    if(lista_usuario==NULL){
         printf("La lista esta vacia\n");
         }
 
-        if(buscar_usuario_recursivo(lista,id_usuuario)==1){
-            printf("El saldo del usuario es:  %.2f\n", lista->dato.saldo);
+        if(buscar_usuario_recursivo(lista_usuario,id_usuuario)==1){
+            printf("El usuario %d tiene un saldo de:  %.2f\n", lista_usuario->dato.id_usuario, lista_usuario->dato.saldo);
         }
         else{ 
             printf("Usuario no encontrado\n");
         }
     }   
         
+
+
+
 
 
 
