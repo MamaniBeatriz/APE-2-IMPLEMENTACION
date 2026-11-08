@@ -11,7 +11,7 @@
     int ID_operaciones;
     float monto;
     int tipo;
-    char fecha[11];
+    tFecha fecha;
 }Operaciones;
 
 typedef struct ListaOperaciones{

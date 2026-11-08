@@ -118,3 +118,109 @@ void consultar_saldo(ListaUsuario *lista_usuario, int id_usuario) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ListaOperaciones*crear_operacion(int id_operacion, float monto, int tipo) {
+    ListaOperaciones *nueva_operacion = malloc(sizeof(ListaOperaciones));
+    if (nueva_operacion == NULL) {
+        printf("Error al crear la operación.\n");
+        return NULL;
+    }
+    nueva_operacion->dato.ID_operaciones = id_operacion;
+    nueva_operacion->dato.monto = monto;
+    nueva_operacion->dato.tipo = tipo;
+    nueva_operacion->dato.fecha = obtenerFecha();
+    nueva_operacion->cant_operaciones = 1;
+    nueva_operacion->sgte = NULL;
+    return nueva_operacion;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void retirar_dinero(ListaUsuario **lista, float monto) {
+    ListaUsuario *aux = *lista;
+    tFecha fecha = obtenerFecha();
+    ListaOperaciones *aux_operaciones = aux->operaciones;
+    aux_operaciones = crear_operacion(aux->dato.id_usuario, monto, 2); // Tipo 2 para retiro
+    while(aux != NULL && aux_operaciones != NULL) {
+        if(aux->dato.saldo >= monto){
+            aux->dato.saldo -= monto;
+            printf("Se han retirado %.2f del usuario %d. Nuevo saldo: %.2f con la fecha: %02d/%02d/%d\n", monto, aux->dato.id_usuario, aux->dato.saldo, fecha.dia, fecha.mes, fecha.anio);   
+        }
+    }
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
