@@ -105,68 +105,6 @@ void consultar_saldo(ListaUsuario *lista_usuario, int id_usuario) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ListaOperaciones*crear_operacion(int id_operacion, float monto, int tipo) {
     ListaOperaciones *nueva_operacion = malloc(sizeof(ListaOperaciones));
     if (nueva_operacion == NULL) {
@@ -181,6 +119,19 @@ ListaOperaciones*crear_operacion(int id_operacion, float monto, int tipo) {
     nueva_operacion->sgte = NULL;
     return nueva_operacion;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
