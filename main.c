@@ -78,8 +78,16 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 *lista_usuarios = eliminar_usuario(lista_usuarios,id_usuario_buscado);// Llamar a la función para eliminar usuario
                 //printf("Usuario eliminado correctamente.\n");
                 break;
-            case 4: // Llamar a la función para ingresar dinero
+            case 4: {
+                float monto;
+                int id_usuario;
+                printf("Ingrese el ID del usuario al que desee ingresar dinero\n");
+                scanf("%d",&id_usuario);
+                printf("Ingrese el monto a ingresar: ");
+                scanf("%f",&monto);
+                ingresar_dinero(lista_usuarios,monto,id_usuario);
                 break;
+            }
             case 5:
                 // Llamar a la función para retirar dinero
                 float monto;
