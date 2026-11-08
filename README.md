@@ -1,2 +1,0 @@
-# APE-2-IMPLEMENTACION
-Implementando TAD en C
