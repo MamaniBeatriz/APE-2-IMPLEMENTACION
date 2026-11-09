@@ -101,9 +101,6 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
             printf("\nIngrese el ID del usuario para consultar su saldo:");
             scanf("%d",&id_usuuario);
             consultar_saldo(*lista_usuarios,id_usuuario);
-          
-                // consultar_saldo(&lista_usuarios,int id_usuario);// Llamar a la función para consultar saldo
-                
                 break;
             case 7: {
                 int id_usuario;
