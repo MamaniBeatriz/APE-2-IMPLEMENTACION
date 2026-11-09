@@ -95,6 +95,7 @@ ListaUsuario *eliminar_usuario(ListaUsuario **lista_usuarios,int id_usuario_busc
 return *lista_usuarios;
 }
 
+
 tFecha obtenerFecha(){
     time_t tiempo;
     struct tm *fechaActual;
@@ -107,6 +108,7 @@ tFecha obtenerFecha(){
     fecha.anio=fechaActual->tm_year + 1900;
     return fecha;
 }
+
 
 void consultar_saldo(ListaUsuario *lista_usuario, int id_usuario) {
     while (lista_usuario != NULL && lista_usuario->dato.id_usuario != id_usuario) {
@@ -136,6 +138,7 @@ ListaOperaciones*crear_operacion(int id_operacion, float monto, int tipo) {
     return nueva_operacion;
 }
 
+
 void ingresar_dinero(ListaUsuario **lista,float monto,int id_usuariooo){
     ListaUsuario *aux=*lista;
     tFecha fecha=obtenerFecha();
@@ -146,7 +149,7 @@ void ingresar_dinero(ListaUsuario **lista,float monto,int id_usuariooo){
     if(aux==NULL){
         printf("Usuario no encontrado.\n");
     }
-ListaOperaciones *nueva_operacion=crear_operacion(aux->dato.id_usuario,monto,1); // Tipo 1 para ingreso
+    ListaOperaciones *nueva_operacion=crear_operacion(aux->dato.id_usuario,monto,1); // Tipo 1 para ingreso
     if(nueva_operacion==NULL){
         printf("Error al crear la nueva operacion.\n");
     }
@@ -159,37 +162,9 @@ ListaOperaciones *nueva_operacion=crear_operacion(aux->dato.id_usuario,monto,1);
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void retirar_dinero(ListaUsuario **lista, float monto, int id_usuario) {
     ListaUsuario *aux = *lista;
     tFecha fecha = obtenerFecha();
-    //ListaOperaciones *aux_operaciones = aux->operaciones;
     while (aux != NULL && aux->dato.id_usuario != id_usuario) {
         aux = aux->sgte;
     }
@@ -208,14 +183,15 @@ void retirar_dinero(ListaUsuario **lista, float monto, int id_usuario) {
 }
 
 
-int contar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {//busca al usuario y cuando lo encuentra llamaa la funcioncant_operaciones_recursiva para contar cuantas operaciones tiene ese usuario 
+
+int operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {//busca al usuario y cuando lo encuentra llama la funcioncant_operaciones_recursiva para contar cuantas operaciones tiene ese usuario 
     int cantidad = -1;
 
     if (lista_usuarios != NULL) {
         if (lista_usuarios->dato.id_usuario == id_usuario) {
             cantidad = cant_operaciones_recursiva(lista_usuarios->operaciones);
         } else {
-            cantidad = contar_operaciones_recursivo(
+            cantidad = operaciones_recursivo(
                 lista_usuarios->sgte, id_usuario
             );
         }
@@ -224,7 +200,8 @@ int contar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {
     return cantidad;
 }
 
-int cant_operaciones_recursiva(ListaOperaciones *operacion) {//recibe el primer nodo de la lista de operaciones de ese usuario, si hay una operacion suma 1 y se autoinvoca pero con la siguienteoperacion hasta llegar a NULL
+
+int cant_operaciones_recursiva(ListaOperaciones *operacion) {//recibe la primer operacion de la lista de operaciones de ese usuario, si hay una operacion suma 1 y se autoinvoca pero con la siguiente operacion hasta llegar a NULL
     int cantidad;
 
     if (operacion == NULL) {
@@ -235,26 +212,3 @@ int cant_operaciones_recursiva(ListaOperaciones *operacion) {//recibe el primer 
 
     return cantidad;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

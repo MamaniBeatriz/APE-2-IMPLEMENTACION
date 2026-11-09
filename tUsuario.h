@@ -20,7 +20,7 @@ void consultar_saldo(ListaUsuario *lista_usuario,int id_usuuario);
 
 // Funciones recursivas
 int cant_operaciones_recursiva(ListaOperaciones *operacion);
-int contar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario);
+int operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario);
 int cant_operaciones_recursiva(ListaOperaciones *operacion);
 int buscar_usuario_recursivo(ListaUsuario *lista,int id_usuario_buscado);
 

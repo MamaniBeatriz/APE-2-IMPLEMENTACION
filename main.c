@@ -109,7 +109,7 @@ void mostrar_menu_usuario(int *opcion, ListaUsuario **lista_usuarios) {
                 int id_usuario;
                 printf("\nIngrese el ID del usuario para consultar su cantidad de operaciones: ");
                 scanf("%d", &id_usuario);
-                int cantidad = contar_operaciones_recursivo(*lista_usuarios, id_usuario);
+                int cantidad = operaciones_recursivo(*lista_usuarios, id_usuario);
                 if (cantidad < 0) {
                     printf("Usuario no encontrado.\n");
                 } else {
