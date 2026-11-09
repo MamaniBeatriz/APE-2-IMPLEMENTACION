@@ -171,7 +171,7 @@ int buscar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {
 
     if (lista_usuarios != NULL) {
         if (lista_usuarios->dato.id_usuario == id_usuario) {
-            cantidad = cant_operaciones_recursiva(lista_usuarios->operaciones);
+            cantidad = contar_operaciones_recursivo(lista_usuarios->operaciones);
         } else {
             cantidad = buscar_operaciones_recursivo(lista_usuarios->sgte, id_usuario);
         }
@@ -181,13 +181,14 @@ int buscar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {
 }
 
 
-int cant_operaciones_recursiva(ListaOperaciones *operacion) {//recibe la primer operacion de la lista de operaciones de ese usuario, si hay una operacion suma 1 y se autoinvoca pero con la siguiente operacion hasta llegar a NULL
+
+int contar_operaciones_recursivo(ListaOperaciones *operacion) {//recibe la primer operacion de la lista de operaciones de ese usuario, si hay una operacion suma 1 y se autoinvoca pero con la siguiente operacion hasta llegar a NULL
     int cantidad;
 
     if (operacion == NULL) {
         cantidad = 0;
     } else {
-        cantidad = 1 + cant_operaciones_recursiva(operacion->sgte);
+        cantidad = 1 + contar_operaciones_recursivo(operacion->sgte);
     }
 
     return cantidad;
