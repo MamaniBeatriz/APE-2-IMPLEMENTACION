@@ -50,24 +50,6 @@ Usuario* registrar_usuario(ListaUsuario **lista, Usuario *nuevo_usuario) {
     }
 }
 
-
-int buscar_usuario_recursivo(ListaUsuario *lista_usuarios, int id_usuario){
-   int encontrado;
-    if(lista_usuarios==NULL){
-        encontrado=0;
-    }
-     else{
-        if(lista_usuarios->dato.id_usuario==id_usuario){
-        encontrado=1;
-    }else{
-        encontrado=buscar_usuario_recursivo(lista_usuarios->sgte,id_usuario);
-    }
-    return encontrado;
-}
-}
-
-
-
 ListaUsuario *eliminar_usuario(ListaUsuario **lista_usuarios,int id_usuario_buscado) {
     ListaUsuario *actual = *lista_usuarios;
     ListaUsuario *anterior = NULL;
@@ -184,16 +166,14 @@ void retirar_dinero(ListaUsuario **lista, float monto, int id_usuario) {
 
 
 
-int operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {//busca al usuario y cuando lo encuentra llama la funcioncant_operaciones_recursiva para contar cuantas operaciones tiene ese usuario 
+int buscar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {//busca al usuario y cuando lo encuentra llama la funcioncant_operaciones_recursiva para contar cuantas operaciones tiene ese usuario 
     int cantidad = -1;
 
     if (lista_usuarios != NULL) {
         if (lista_usuarios->dato.id_usuario == id_usuario) {
             cantidad = cant_operaciones_recursiva(lista_usuarios->operaciones);
         } else {
-            cantidad = operaciones_recursivo(
-                lista_usuarios->sgte, id_usuario
-            );
+            cantidad = buscar_operaciones_recursivo(lista_usuarios->sgte, id_usuario);
         }
     }
 
