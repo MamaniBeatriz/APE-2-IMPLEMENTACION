@@ -165,7 +165,7 @@ void retirar_dinero(ListaUsuario **lista, float monto, int id_usuario) {
 
 
 
-int buscar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {//busca al usuario y cuando lo encuentra llama la funcioncant_operaciones_recursiva para contar cuantas operaciones tiene ese usuario 
+int buscar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {
     int cantidad = -1;
 
     if (lista_usuarios != NULL) {
