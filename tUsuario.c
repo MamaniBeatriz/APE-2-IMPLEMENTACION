@@ -175,7 +175,6 @@ int buscar_operaciones_recursivo(ListaUsuario *lista_usuarios, int id_usuario) {
             cantidad = buscar_operaciones_recursivo(lista_usuarios->sgte, id_usuario);
         }
     }
-
     return cantidad;
 }
 
