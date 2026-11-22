@@ -140,7 +140,6 @@ void ingresar_dinero(ListaUsuario **lista,float monto,int id_usuariooo){
     aux->operaciones=nueva_operacion;
     aux->dato.saldo +=monto;
     printf("Se ha ingresado %.2f al usuario %d. Nuevo saldo: %.2f con la fecha: %02d/%02d/%d\n",monto,aux->dato.id_usuario,aux->dato.saldo,fecha.dia,fecha.mes,fecha.anio);
-
 }
 
 
